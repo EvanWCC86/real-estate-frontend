@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import styled from 'styled-components'
 import Navbar from '../components/Navbar'
 import { useDispatch, useSelector} from "react-redux";
@@ -9,10 +9,13 @@ import SearchForm from '../components/SearchForm'
 const PropertiesPage = () => {
   const dispatch = useDispatch();
   const {loading, posts, error} = useSelector((state) => state.getAllPosts)
-  
+  const [filteredPosts, setFilteredPosts] = useState([])
   useEffect(() => {
     dispatch(getPosts());
+    setFilteredPosts(posts)
   },[dispatch]);
+
+  console.log(filteredPosts)
   return (
     <div>
       <NavbarSection>
@@ -22,7 +25,7 @@ const PropertiesPage = () => {
       <HeroSection>
         <HeroContainer>
           <SearchSection>
-            <SearchForm />
+            <SearchForm filterPosts = {posts} filteredPosts={filteredPosts} setFilteredPosts={setFilteredPosts} />
           </SearchSection>
           <img src="../../images/hero.jpg" alt="heroImage" />
         </HeroContainer>
@@ -31,7 +34,7 @@ const PropertiesPage = () => {
       {loading && <h1>Data is loading</h1>}
       {error && <h1>something with data</h1>}
       <PostsContainer>
-        {posts && <Posts postsData={posts} />}
+        {filteredPosts && <Posts postsData={filteredPosts} />}
       </PostsContainer>
     </div>
   )

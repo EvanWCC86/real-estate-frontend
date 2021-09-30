@@ -1,9 +1,27 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-const SearchForm = () => {
+const SearchForm = ({filterPosts, setFilteredPosts,filteredPosts}) => {
     const [buy, setBuy] = useState(false)
     const [rent, setRent] = useState(false)
     
+    const [filtered, setFiltered] = useState('')
+    
+    const handleChange = (e) => {
+        const filter = e.target.value;
+        setFiltered(filter)
+    }
+    console.log(filterPosts)
+    console.log(filtered)
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const filterData = filterPosts.filter(item => item.city.toLowerCase().includes(filtered.toLowerCase()))
+        
+         
+    
+    setFilteredPosts(filterData)
+        
+    }
+    console.log(filteredPosts)
     
     const buyActive = () => {
         setBuy(true);
@@ -19,10 +37,10 @@ const SearchForm = () => {
             <BuyButton  buy={buy} onClick={buyActive}>Buy</BuyButton>
             <RentButton rent={rent} onClick={rentActive}>Rent</RentButton>
         </FormTop>
-        <form>
+        <form onSubmit={handleSubmit}>
             
             <FormInputContainer>
-                <input type="text" name="search" placeholder="Address, City, Postal-Code" />
+                <input type="text" name="search" placeholder="Address, City, Postal-Code" onChange={handleChange} />
                 <button type="submit">Search</button>
             </FormInputContainer>
         </form>

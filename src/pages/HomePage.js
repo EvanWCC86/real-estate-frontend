@@ -17,7 +17,7 @@ const HomePage = () => {
     dispatch(getPosts());
   },[dispatch]);
 
-  const featurePosts = posts.slice(0,3)
+  const featurePosts = posts?.slice(0,3)
   return (
     <div>
       <Header />
