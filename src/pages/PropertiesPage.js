@@ -13,7 +13,7 @@ const PropertiesPage = () => {
   useEffect(() => {
     dispatch(getPosts());
     setFilteredPosts(posts)
-  },[dispatch]);
+  },[dispatch,posts]);
 
   console.log(filteredPosts)
   return (
