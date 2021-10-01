@@ -4,7 +4,7 @@ import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import PhoneOutlinedIcon from '@material-ui/icons/PhoneOutlined';
 import ForumOutlinedIcon from '@material-ui/icons/ForumOutlined';
 const AgentCard = ({item}) => {
-    const {image,title,name,company,companyLogo,email,phone,wechat,adress,properties} = item
+    const {image,title,name,company,email,phone,wechat} = item
   return (
     <AgentContainer>
       <ImageContainer>

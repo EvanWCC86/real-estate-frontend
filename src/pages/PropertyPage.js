@@ -9,7 +9,7 @@ import {getPostDetail} from '../redux/actions/postsActions'
 import PropertyDetail from '../components/PropertyDetail'
 import AgentCard from '../components/AgentCard'
 import Navbar from '../components/Navbar'
-import Header from '../components/Header'
+// import Header from '../components/Header'
 import SearchForm from '../components/SearchForm'
 
 const PropertyPage = ({match}) => {
@@ -43,6 +43,9 @@ const PropertyPage = ({match}) => {
   if(loading){
     return <h1>loading</h1>
   };
+  if(error) {
+    return <h1>Something wrong...</h1>
+  }
   
   if(post) {
     return (

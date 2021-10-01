@@ -18,6 +18,8 @@ const HomePage = () => {
   },[dispatch]);
 
   const featurePosts = posts?.slice(0,3)
+  if (loading) return <h1>loading...</h1>
+  if(error) return <h1>Something wrong...</h1>
   return (
     <div>
       <Header />
