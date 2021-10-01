@@ -9,11 +9,11 @@ import SearchForm from '../components/SearchForm'
 const PropertiesPage = () => {
   const dispatch = useDispatch();
   const {loading, posts, error} = useSelector((state) => state.getAllPosts)
-  const [filteredPosts, setFilteredPosts] = useState([])
+  const [filteredPosts, setFilteredPosts] = useState(posts)
   useEffect(() => {
     dispatch(getPosts());
     setFilteredPosts(posts)
-  },[dispatch,posts]);
+  },[]);
 
   console.log(filteredPosts)
   return (
