@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-const SearchForm = ({filterPosts, setFilteredPosts,filteredPosts}) => {
+const SearchForm = ({setFilteredPosts,posts}) => {
     const [buy, setBuy] = useState(false)
     const [rent, setRent] = useState(false)
     
@@ -10,18 +10,18 @@ const SearchForm = ({filterPosts, setFilteredPosts,filteredPosts}) => {
         const filter = e.target.value;
         setFiltered(filter)
     }
-    console.log(filterPosts)
-    console.log(filtered)
+    
+//    console.log(filtered)
     const handleSubmit = (e) => {
         e.preventDefault();
-        const filterData = filterPosts.filter(item => item.city.toLowerCase().includes(filtered.toLowerCase()))
+        const filterData = posts.filter(item => item.city.toLowerCase().includes(filtered.toLowerCase()))
         
          
     
     setFilteredPosts(filterData)
         
     }
-    console.log(filteredPosts)
+   
     
     const buyActive = () => {
         setBuy(true);

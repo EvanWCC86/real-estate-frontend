@@ -12,10 +12,13 @@ const PropertiesPage = () => {
   const [filteredPosts, setFilteredPosts] = useState(posts)
   useEffect(() => {
     dispatch(getPosts());
+    
+  },[dispatch]);
+  useEffect(() => {
     setFilteredPosts(posts)
-  },[]);
+  },[posts])
 
-  console.log(filteredPosts)
+  
   return (
     <div>
       <NavbarSection>
@@ -25,16 +28,17 @@ const PropertiesPage = () => {
       <HeroSection>
         <HeroContainer>
           <SearchSection>
-            <SearchForm filterPosts = {posts} filteredPosts={filteredPosts} setFilteredPosts={setFilteredPosts} />
+            <SearchForm posts={posts} setFilteredPosts={setFilteredPosts} />
           </SearchSection>
           <img src="../../images/hero.jpg" alt="heroImage" />
         </HeroContainer>
       </HeroSection>
       {/* main content */}
       {loading && <h1>Data is loading</h1>}
-      {error && <h1>something with data</h1>}
+      {error && <h1>something wrong with data</h1>}
       <PostsContainer>
         {filteredPosts && <Posts postsData={filteredPosts} />}
+       
       </PostsContainer>
     </div>
   )

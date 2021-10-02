@@ -26,7 +26,7 @@ const imagesArray = postData.images?.map((item) => {
             
             <ImagesContainer>
                 {images5?.map((item,index) => (
-                    <ImageContainer>
+                    <ImageContainer key={index}>
                         <img src={item} alt={postData.address} onClick={() => openImagesModel(index)}/>
                     </ImageContainer>
                 ))}
